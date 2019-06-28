@@ -5,10 +5,37 @@
  */
 package network;
 
+import com.esotericsoftware.kryonet.Connection;
+import com.esotericsoftware.kryonet.Listener;
+import java.util.ArrayList;
+import model.Packet;
+import model.Student;
+
 /**
  *
  * @author Richs
  */
-public class KD2ClientListener {
+public class KD2ClientListener extends Listener{
     
+    @Override
+    public void connected(Connection connection){
+        System.out.println("Someone has connected!");
+    }
+
+    @Override
+    public void disconnected(Connection connection){
+        System.out.println("Someone disconnected!");
+    }
+
+    @Override
+    public void received(Connection c, Object o){
+        if(o instanceof Packet.StudentArray01){
+            System.out.println("Packet received");
+        }
+    }
+    public ArrayList<Student> fillGrades(ArrayList<Student> students){ 
+      ArrayList<Student> studentGrades = new ArrayList<>();
+      return studentGrades;
+    }
+
 }

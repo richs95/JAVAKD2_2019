@@ -19,19 +19,22 @@ import model.Student;
  */
 public class ActionsWithDB {
     
+
+    private static Connection con = null;
     private static Statement statement = null;
+
     
     //JDBC draivera ielade
-    private static Connection connect() {
-            Connection connection = null;
+    public static Connection connect() {
+            con = null;
 
             String url = "jdbc:sqlite:database.db";
             try {
-                    connection = DriverManager.getConnection(url);
+                    con = DriverManager.getConnection(url);
             } catch (SQLException e) {
                     e.printStackTrace();
             }
-            return connection;
+            return con;
     }
     
     //datubazes izveide
